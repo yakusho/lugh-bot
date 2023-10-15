@@ -15,7 +15,7 @@ export default {
         .setName("name")
         .setDescription("Meeting room channel name")
         .setRequired(true)
-      ),
+    ),
 
   async execute(interaction: ChatInputCommandInteraction) {
     const guild = interaction.guild as Guild;
@@ -26,7 +26,7 @@ export default {
       });
     }
 
-    const roomName = interaction.options.getString('name') ?? 'Unnamed room';
+    const roomName = interaction.options.getString("name") ?? "Unnamed room";
 
     const channel = await guild.channels.create({ 
       name: roomName,

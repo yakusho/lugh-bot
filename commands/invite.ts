@@ -25,8 +25,8 @@ export default {
     ),
 
   async execute(interaction: ChatInputCommandInteraction) {
-    const user = interaction.options.getUser('user');
-    const channel = interaction.options.getChannel('channel');
+    const user = interaction.options.getUser("user");
+    const channel = interaction.options.getChannel("channel");
 
     if (!channel || !user) {
       return await interaction.reply({

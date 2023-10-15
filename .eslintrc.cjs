@@ -1,8 +1,8 @@
 /* eslint-env node */
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
   root: true,
   rules: {
     semi: "error",
@@ -12,6 +12,8 @@ module.exports = {
       ignoreTemplateLiterals: true,
       ignoreStrings: true
     }],
-    "comma-dangle": ["error", "never"]
+    "comma-dangle": ["error", "never"],
+    "quotes": ["error"],
+    "indent": ["error", 2]
   }
 };

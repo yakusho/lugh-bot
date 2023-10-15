@@ -15,11 +15,11 @@ export default {
         .setName("channel")
         .setDescription("Channel to close")
         .setRequired(true)
-      ),
+    ),
 
   async execute(interaction: ChatInputCommandInteraction) {
     const guild = interaction.guild as Guild;
-    const channel = interaction.options.getChannel('channel');
+    const channel = interaction.options.getChannel("channel");
 
     if (!channel) {
       return await interaction.reply({
