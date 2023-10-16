@@ -4,6 +4,7 @@ import {
   ChatInputCommandInteraction,
   ComponentType,
   Guild,
+  PermissionResolvable,
   SlashCommandBuilder,
   UserSelectMenuBuilder,
   channelMention,
@@ -19,6 +20,11 @@ export default {
         .setName("name")
         .setDescription("Meeting room channel name")
         .setRequired(true)
+    )
+    .addBooleanOption(option =>
+      option
+        .setName("hidden")
+        .setDescription("Should the room be hidden from everyone?")
     ),
 
   async execute(interaction: ChatInputCommandInteraction) {
@@ -30,10 +36,19 @@ export default {
       });
     }
 
-    const roomName = interaction.options.getString("name") ?? "Unnamed room";
+    const name = interaction.options.getString("name") ?? "Unnamed room";
+    const hidden = interaction.options.getBoolean("hidden");
+
+    const deny: PermissionResolvable[] = [
+      "Connect"
+    ];
+
+    if (hidden) {
+      deny.push("ViewChannel");
+    }
 
     const channel = await guild.channels.create({
-      name: roomName,
+      name,
       type: ChannelType.GuildVoice,
       permissionOverwrites: [
         {
@@ -46,9 +61,7 @@ export default {
         },
         {
           id: guild.id,
-          deny: [
-            "ViewChannel"
-          ]
+          deny
         }
       ]
     });
