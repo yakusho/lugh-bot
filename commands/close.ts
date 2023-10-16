@@ -15,6 +15,7 @@ export default {
         .setName("channel")
         .setDescription("Channel to close")
         .setRequired(true)
+        .addChannelTypes(ChannelType.GuildVoice)
     ),
 
   async execute(interaction: ChatInputCommandInteraction) {

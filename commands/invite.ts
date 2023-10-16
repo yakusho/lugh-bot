@@ -16,6 +16,7 @@ export default {
         .setName("channel")
         .setDescription("Channel where the meeting is happening")
         .setRequired(true)
+        .addChannelTypes(ChannelType.GuildVoice)
     )
     .addUserOption(option =>
       option
